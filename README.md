@@ -21,7 +21,7 @@ Clone the repository:
 Bash
 
 Copy code
-git clone https://github.com/yourusername/clickfix-poc.git
+git clone(https://github.com/chinonsoanekwe687-tech/click-fix-with-uncompleted-powershell-payload.git)
 Follow the setup instructions in the INSTALL.md file.
 Run the PoC in a controlled, isolated environment.
 Mitigation Tips
